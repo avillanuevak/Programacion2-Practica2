@@ -129,5 +129,4 @@ public class LlistaAccessos implements InLlistaAccessos{
          }
          return longNivell;
      }
-    
 }

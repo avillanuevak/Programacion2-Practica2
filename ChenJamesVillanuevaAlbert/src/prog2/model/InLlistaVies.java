@@ -1,4 +1,3 @@
-
 package prog2.model;
 
 import prog2.vista.ExcepcioEstacio;
@@ -52,5 +51,4 @@ public interface InLlistaVies {
      */
     public Via getVia(String nom) throws ExcepcioEstacio;
     
- 
 }
