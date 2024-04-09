@@ -12,6 +12,7 @@ package prog2.model;
 public class EscalaMecanica extends AccessDesnivell{
     
     private String marca;
+    private boolean estat;
     
     /**
      * Constructor de la classe EscalaMecanica amb paràmetres
@@ -22,9 +23,10 @@ public class EscalaMecanica extends AccessDesnivell{
      * @param desnivell
      * @param marca 
      */
-    public EscalaMecanica(String nom, boolean accessibilitat, boolean estat, Via vies, float desnivell, String marca){
-        super(nom, accessibilitat, estat, vies, desnivell);
+    public EscalaMecanica(String marca, float desnivell, String nom, boolean estat){
+        super(desnivell);
         this.marca = marca;
+        this.estat = estat;
     }
 
     /**
@@ -38,6 +40,17 @@ public class EscalaMecanica extends AccessDesnivell{
     public void setMarca(String marca) {
         this.marca = marca;
     }
+
+    @Override
+    public boolean isEstat() {
+        return estat;
+    }
+
+    @Override
+    public void setEstat(boolean estat) {
+        this.estat = estat;
+    }
+    
    
     
     /**

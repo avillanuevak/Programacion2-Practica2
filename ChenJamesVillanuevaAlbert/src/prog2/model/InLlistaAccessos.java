@@ -14,7 +14,7 @@ public interface InLlistaAccessos {
      * @param acc Objecte de tipus Acces.
      * @throws prog2.vista.ExcepcioEstacio Aquest mètode podria llançar una excepció si fos necessari.
      */
-    public void afegirAcces(Access acc) throws ExcepcioEstacio;
+    public void afegirAcces(Acces acc) throws ExcepcioEstacio;
     
     /**
      * Buida la llista d'accessos

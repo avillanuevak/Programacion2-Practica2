@@ -9,10 +9,9 @@ package prog2.model;
  * @author James Chen
  */
 public class Via implements InVia {
-    private String nom;
-    private int amplada, nTunels;
-    private String estat;
-    private String llum;
+    private String nom, llum, amplada;
+    private int nTunels;
+    private boolean estat;
     
     
     /**
@@ -23,7 +22,7 @@ public class Via implements InVia {
      * @param estat
      * @param llum 
      */
-    public Via(String nom, int amplada, int nTunels, String estat, String llum){
+    public Via(String nom, String amplada, int nTunels, boolean estat, String llum){
         this.nom = nom;
         this.amplada = amplada;
         this.nTunels = nTunels;
@@ -43,12 +42,12 @@ public class Via implements InVia {
     public void setNom(String nom) {
         this.nom = nom;
     }
-
-    public int getAmplada() {
+    
+    public String getAmplada() {
         return amplada;
     }
 
-    public void setAmplada(int amplada) {
+    public void setAmplada(String amplada) {
         this.amplada = amplada;
     }
 
@@ -60,11 +59,11 @@ public class Via implements InVia {
         this.nTunels = nTunels;
     }
 
-    public String getEstat() {
+    public boolean getEstat() {
         return estat;
     }
 
-    public void setEstat(String estat) {
+    public void setEstat(boolean estat) {
         this.estat = estat;
     }
 
@@ -84,7 +83,7 @@ public class Via implements InVia {
      */
     @Override
     public void tancarVia(Incidencia in){
-        estat = "Tancada";
+        estat = false;
         llum = in.getIluminacioVia();
     }
     
@@ -93,7 +92,7 @@ public class Via implements InVia {
      */
     @Override
     public void obrirVia(){
-        estat = "Oberta";
+        estat = false;
         llum = "100%";
     }
     @Override

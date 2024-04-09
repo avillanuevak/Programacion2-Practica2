@@ -11,6 +11,7 @@ package prog2.model;
  */
 public class VistaEstacioTren {
     private String nomEstacio;
+    private EstacioTren estacioTren;
     
     /**
      * Constructor de la classe VistaEstacioTren sense paràmetres
@@ -38,7 +39,9 @@ public class VistaEstacioTren {
         this.nomEstacio = nomEstacio;
     }
     
+    
+    
     public void gestioEstacioTren(){
-        //No se como se hace el metodo
+        
     }
 }

@@ -123,7 +123,7 @@ public class EstacioTren implements Serializable{
         return estacio;   
     }
     
-    public void inicialitzaDadesEstacioTren() {
+    public void inicialitzaDadesEstacioTren() throws ExcepcioEstacio {
     
         llistaAccessos.buidar();
         

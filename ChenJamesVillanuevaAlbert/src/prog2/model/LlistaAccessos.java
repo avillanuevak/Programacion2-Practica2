@@ -5,29 +5,30 @@
 package prog2.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import prog2.vista.ExcepcioEstacio;
 
 /**
- * Represents a linked list of Access objects.
+ * Represents a linked list of Acces objects.
  *
  * @author Albert
  */
 public class LlistaAccessos implements InLlistaAccessos{
-    private ArrayList<Access> llistaAccessos = new ArrayList();
+    private ArrayList<Acces> llistaAccessos = new ArrayList();
     
     
     /**
      * Constructor de la classe LlistaAccessos sense paràmetres
      */
     public LlistaAccessos(){
-        llistaAccessos = new ArrayList<Access>();
+        llistaAccessos = new ArrayList<Acces>();
     }
     
     /**
      * Constructor de la classe LlistaAccessos amb paràmetres
      * @param llistaAccessos 
      */
-    public LlistaAccessos(ArrayList<Access> llistaAccessos){
+    public LlistaAccessos(ArrayList<Acces> llistaAccessos){
         this.llistaAccessos = llistaAccessos;
     }
     
@@ -37,7 +38,7 @@ public class LlistaAccessos implements InLlistaAccessos{
      * @throws prog2.vista.ExcepcioEstacio Aquest mètode podria llançar una excepció si fos necessari.
      */
     @Override
-    public void afegirAcces(Access acc) throws ExcepcioEstacio{
+    public void afegirAcces(Acces acc) throws ExcepcioEstacio{
         llistaAccessos.add(acc);
     }
     
@@ -62,7 +63,7 @@ public class LlistaAccessos implements InLlistaAccessos{
         StringBuilder accessos = new StringBuilder();
         if(llistaAccessos.isEmpty()) throw new ExcepcioEstacio("No hi ha cap access registrada.");
         else{
-            for(Access acc : llistaAccessos){
+            for(Acces acc : llistaAccessos){
                 accessos.append(acc.toString());
             }
         }
@@ -70,19 +71,20 @@ public class LlistaAccessos implements InLlistaAccessos{
      }
      
      /**
-      * Recorre tota la llista d'accessos i els tanca.Només decidirà obrir cadascun d'ells si permet l'accés a alguna via oberta.
+      * Recorre tota la llista d'accessos i els tanca. Només decidirà obrir cadascun d'ells si permet l'accés a alguna via oberta.
      * @throws prog2.vista.ExcepcioEstacio Aquest mètode podria llançar una excepció si fos necessari.
       */
      @Override
      public void actualitzaEstatAccessos() throws ExcepcioEstacio{
+         
          if(!llistaAccessos.isEmpty()){
-             for(Access acc : llistaAccessos){
+             for(Acces acc : llistaAccessos){
+                 Iterator<Via> it = acc.llistaVies.iterator();
                  acc.setEstat(false);
-                 if(acc.getVies().getEstat().equals("Obert")){
-                     acc.setEstat(true);
+                 while (it.hasNext()){
+                     if(it.getEstat()) acc.setEstat(true);
                  }
              }
-             
          }
          else{
              throw new ExcepcioEstacio("No hi ha accessos registrats.");
@@ -98,7 +100,7 @@ public class LlistaAccessos implements InLlistaAccessos{
      public int calculaAccessosAccessibles() throws ExcepcioEstacio{
          int accAccessibles = 0;
          if(!llistaAccessos.isEmpty()){
-            for(Access acc : llistaAccessos){
+            for(Acces acc : llistaAccessos){
                 if(acc.isEstat()) accAccessibles ++;
             }
          }
@@ -117,7 +119,7 @@ public class LlistaAccessos implements InLlistaAccessos{
      public float calculaLongitudAccessosNivell() throws ExcepcioEstacio{
          float longNivell = 0;
          if(!llistaAccessos.isEmpty()){
-             for(Access acc : llistaAccessos){
+             for(Acces acc : llistaAccessos){
                  if(acc.getClass().getName().equals("AccessNivell")){
                      AccessNivell accNivell = (AccessNivell) acc;
                      longNivell += accNivell.getLongitud();

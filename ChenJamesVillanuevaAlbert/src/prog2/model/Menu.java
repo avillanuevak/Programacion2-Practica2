@@ -1,127 +1,120 @@
-/*
- * Universitat de Barcelona
- * Programació 2
- */
 package prog2.model;
 
 import java.util.Scanner;
 
 /**
- * Implements a text menu from a list of enumeration options.
- *
+ * Implements a text menu from a list of options.
  * @author Xavi Baró
  */
-public class Menu<TEnum extends Enum<TEnum>> {
+public class Menu<TEnum> {
+     /**
+     * Llista de les opcions
+     */
+    TEnum[] _llistaOpcions=null;
 
     /**
-     * List of the options
+     * Títol del menú
      */
-    private TEnum[] _llistaOpcions;
+    String _titol="";
 
     /**
-     * Title of the menu
+     * Llista amb els missatges associats a les accions
      */
-    private String _titol;
+    String[] _descripcions=null;
 
     /**
-     * List with the descriptions associated with the actions
+     * Constructor per defecte. Se li ha de passar un enumeració de les opcions.
+     * @param titol Títol del menú
+     * @param llistaOpcions Enumeració amb les opcions
      */
-    private String[] _descripcions;
-
-    /**
-     * Constructs a menu with a given title and a list of enumeration options.
-     *
-     * @param titol Title of the menu
-     * @param llistaOpcions List of enumeration options
-     */
-    public Menu(String titol, TEnum... llistaOpcions) {
-        _titol = titol;
-        _llistaOpcions = llistaOpcions;
+    public Menu(String titol,TEnum[] llistaOpcions) {
+        _titol=titol;
+        _llistaOpcions=llistaOpcions;
     }
 
     /**
-     * Sets a customized description for each option in the menu.
-     *
-     * @param descripcions List of descriptions
+     * Permet assignar una descripció personalitzada a les opcions del menú
+     * @param descripcions Llista de descripcions
      */
     public void setDescripcions(String[] descripcions) {
-        if (descripcions != null && descripcions.length == _llistaOpcions.length) {
-            _descripcions = descripcions;
+        if(descripcions.length!=_llistaOpcions.length) {
+            _descripcions=null;
         } else {
-            _descripcions = null;
+            _descripcions=descripcions;
         }
     }
-
+    
     /**
-     * Displays the menu options.
+     * Mostra el menú d'opcions
      */
     public void mostrarMenu() {
-        // Print the menu header
-        String lines = "--------------";
-        for (int i = 0; i < getMaxLen(); i++) {
-            lines += "-";
+        // Mostrem les opcions
+        String lines="--------------";
+        for(int i=0;i<getMaxLen();i++) {
+            lines+="-";
         }
         System.out.println(lines);
         System.out.println(_titol.toUpperCase());
         System.out.println(lines);
-
-        // Print each option
-        for (int i = 0; i < _llistaOpcions.length; i++) {
-            TEnum option = _llistaOpcions[i];
-            System.out.printf("\t%d.-%s ", i + 1, option.name());
-
-            // Print the description if it exists
-            if (_descripcions != null) {
-                System.out.println(": " + _descripcions[i]);
+        for(TEnum c : _llistaOpcions){
+            
+            // Mostrem la posició
+            int pos=((Enum)c).ordinal();
+            System.out.print("\t" + (pos+1) + ".- ");
+            
+            // Mostrem la descripció
+            if(_descripcions!=null) {
+                System.out.println(_descripcions[pos]);
             } else {
-                System.out.println();
+                System.out.println(c);
             }
         }
-
         System.out.println(lines);
     }
 
     /**
-     * Gets an option from the user using the given scanner.
-     *
-     * @param sc Scanner to read user input
-     * @return Selected option
+     * Demana una opció utilitzant la entrada passada per paràmetre.
+     * @param sc Canal d'entrada utilitzat per a obtenir la opció
+     * @return Opció seleccionada.
      */
     public TEnum getOpcio(Scanner sc) {
-        TEnum opcio = null;
-        int opcioInt = -1;
+        TEnum opcio=null;
 
-        // Get a valid option
+        // Demanem una opció assegurant que sigui correcta
+        int opcioInt=-1;
         do {
-            System.out.print("Enter an option >> ");
-            opcioInt = sc.nextInt();
+            System.out.print("Entra una opcio >> ");
+            opcioInt=sc.nextInt();
             sc.nextLine();
 
-            if (opcioInt > 0 && opcioInt <= _llistaOpcions.length) {
-                opcio = _llistaOpcions[opcioInt - 1];
+            if(opcioInt>0 && opcioInt<=_llistaOpcions.length) {
+                // Passem de l'enter a una opcio i la retornem
+                opcio=_llistaOpcions[opcioInt-1];
             } else {
-                System.err.println("Invalid option. Select an option between 1 and " + _llistaOpcions.length);
+                System.err.println("La opció seleccionada no és correcta. Selecciona una opció entre 1 i " + (_llistaOpcions.length));
             }
-        } while (opcio == null);
+        } while(opcio==null);
 
         return opcio;
     }
 
     /**
-     * Gets the maximum length of the descriptions of the options.
-     *
-     * @return Maximum length of the descriptions
+     * Troba la longitud màxima en les descripcions de les opcions
+     * @return Longitud de la descripció més llarga
      */
     private int getMaxLen() {
-        int maxLen = 0;
+        int maxLen=0;
 
-        for (TEnum option : _llistaOpcions) {
-            maxLen = Math.max(maxLen, option.name().length());
-        }
+        for(TEnum c : _llistaOpcions){
 
-        if (_descripcions != null) {
-            for (String description : _descripcions) {
-                maxLen = Math.max(maxLen, description.length());
+            // Obtenim la posició
+            int pos=((Enum)c).ordinal();
+
+            // Mostrem la descripció
+            if(_descripcions!=null) {
+                maxLen=Math.max(maxLen, _descripcions[pos].length());
+            } else {
+                maxLen=Math.max(maxLen, c.toString().length());                
             }
         }
 

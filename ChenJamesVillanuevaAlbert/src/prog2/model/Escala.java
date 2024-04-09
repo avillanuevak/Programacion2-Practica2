@@ -13,13 +13,11 @@ public class Escala extends AccessDesnivell{
     /**
      * Constructor de la classe Escala amb paràmetres
      * @param nom
-     * @param accessibilitat
      * @param estat
-     * @param vies
      * @param desnivell 
      */
-    public Escala(String nom, boolean accessibilitat, boolean estat, Via vies, float desnivell){
-        super(nom, accessibilitat, estat, vies, desnivell);
+    public Escala(float desnivell, String nom, boolean estat){
+        super(desnivell);
     }
     
     /**

@@ -47,7 +47,7 @@ public class LlistaIncidencies implements InLlistaIncidencies{
      */
     @Override
     public void afegirIncidencia(int num, String tipus, Via via, String data) throws ExcepcioEstacio{
-        if(via.getEstat().equals("Tancada")) throw new ExcepcioEstacio("La via ja te una incidencia");
+        if(via.getEstat()) throw new ExcepcioEstacio("La via ja te una incidencia");
         else{
             if(tipus.equals("Reparacio")){
             Incidencia in = new Incidencia(num, Incidencia.TipusIncidencia.Reparacio, via, data);
@@ -117,5 +117,4 @@ public class LlistaIncidencies implements InLlistaIncidencies{
         }
         throw new ExcepcioEstacio("No hi ha una incidencia amb aquell identificador");
     }
-
 }

@@ -12,7 +12,7 @@ import prog2.vista.ExcepcioEstacio;
  *
  * @author Albert Villanueva
  */
-public abstract class Access implements InAcces{
+public abstract class Acces implements InAcces{
     private String nom;
     private boolean accessibilitat, estat;
     LlistaVies llistaVies;
@@ -21,7 +21,7 @@ public abstract class Access implements InAcces{
     /**
      * Constructor de la classe acess amb paràmetres
      */
-    public Access(){
+    public Acces(){
         this.llistaVies = new LlistaVies();
         this.nom = nom;
         this.accessibilitat = accessibilitat;
@@ -70,7 +70,7 @@ public abstract class Access implements InAcces{
         try {
             llistaVies.afegirVia(via);
         } catch (ExcepcioEstacio ex) {
-            Logger.getLogger(Access.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en afegir la via.");;
         }
     }
     

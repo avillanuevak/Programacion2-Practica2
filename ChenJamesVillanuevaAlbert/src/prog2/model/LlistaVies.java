@@ -73,7 +73,7 @@ public class LlistaVies implements InLlistaVies{
         boolean comprobar = false;
         String elString = "";
         for (Via it: llistaVia){
-            if(it.getEstat().equals(estat)){
+            if(it.getEstat()){
                 comprobar = true;
                 elString += it.toString();
 
@@ -92,7 +92,7 @@ public class LlistaVies implements InLlistaVies{
     @Override
     public boolean containsViesObertes(){
         for (Via it : llistaVia){
-            if(it.getEstat().equals("Oberta")){
+            if(it.getEstat()){
                 return true;
             }
         }

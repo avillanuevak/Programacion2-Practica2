@@ -8,16 +8,12 @@ package prog2.model;
  *
  * @author Albert Villanueva
  */
-public abstract class AccessDesnivell extends Access{
+public abstract class AccessDesnivell extends Acces{
     private float desnivell;
     
     
     /**
      * Constructor de la classe AccessDesnivell amb paràmetres
-     * @param nom
-     * @param accessibilitat
-     * @param estat
-     * @param vies
      * @param desnivell 
      */
     public AccessDesnivell(float desnivell){

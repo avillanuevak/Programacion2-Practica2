@@ -9,18 +9,28 @@ package prog2.model;
  * @author Albert
  */
 public class CintaTransportadora extends AccessNivell{
-    
+    private float velocitat;
     /**
      * Constructor de la classe CintaTransportadora amb paràmetres
+     * @param velocitat
      * @param nom
-     * @param accessibilitat
      * @param estat
-     * @param vies
      * @param longitud 
      */
-    public CintaTransportadora(String nom, boolean accessibilitat, boolean estat, Via vies, int longitud){
-        super(nom, accessibilitat, estat, vies, longitud);
+    public CintaTransportadora(float velocitat, float longitud, String nom,boolean estat){
+        super(longitud);
+        this.velocitat = velocitat;
     }
+
+    // Mètodes getters i setters de velocitat
+    public float getVelocitat() {
+        return velocitat;
+    }
+
+    public void setVelocitat(float velocitat) {
+        this.velocitat = velocitat;
+    }
+    
     
     /**
      * La cinta transportadora no és accessible
@@ -37,6 +47,6 @@ public class CintaTransportadora extends AccessNivell{
      */
     @Override
     public String toString(){
-        return super.toString();
+        return super.toString() + "\nVelocitat de la cinta: " + this.getVelocitat();
     }
 }

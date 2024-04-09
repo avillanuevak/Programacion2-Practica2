@@ -8,8 +8,8 @@ package prog2.model;
  *
  * @author Albert Villanueva
  */
-public abstract class AccessNivell extends Access {
-    private int longitud;
+public abstract class AccessNivell extends Acces {
+    private float longitud;
 
     
     /**
@@ -20,7 +20,7 @@ public abstract class AccessNivell extends Access {
      * @param vies
      * @param longitud 
      */
-    public AccessNivell(int longitud) {
+    public AccessNivell(float longitud) {
         super();
         this.longitud = longitud;
     }
@@ -29,12 +29,21 @@ public abstract class AccessNivell extends Access {
  * Mètodes getters i setters dels atributs de la classe
  * @return 
  */
-    public int getLongitud() {
+    public float getLongitud() {
         return longitud;
     }
 
     public void setLongitud(int longitud) {
         this.longitud = longitud;
     }
-
+    
+    @Override
+    public String toString(){
+        String accessibilitatString, estatString;
+        accessibilitatString = this.isAccessibilitat() ? "Si." : "No.";
+        estatString = this.isEstat() ? "Oberta" : "Tancada";
+        return "Nom: " + this.getNom() + "Tipus: " + this.getClass().getSimpleName() + 
+                "\nCaracteristiques: Longitud " + this.getLongitud() + " metres." + 
+                "Accessibilitat: " + accessibilitatString + " Estat: " + estatString;
+    }
 }

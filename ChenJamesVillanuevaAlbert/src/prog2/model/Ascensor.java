@@ -89,6 +89,6 @@ public class Ascensor extends AccessDesnivell{
      */
     @Override
     public String toString(){
-        return super.toString() + "\nCarrega maxima de l'ascensor: " + this.getCarregaMax();
+        return super.toString() + "\nCarrega maxima de l'ascensor: " + this.getPes();
     }
 }

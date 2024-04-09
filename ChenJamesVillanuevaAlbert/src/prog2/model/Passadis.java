@@ -13,13 +13,11 @@ public class Passadis extends AccessNivell{
     /**
      * Constructor de la classe Passadís amb paràmetres
      * @param nom
-     * @param accessibilitat
      * @param estat
-     * @param vies
      * @param longitud 
      */
-    public Passadis(String nom, boolean accessibilitat, boolean estat, Via vies, int longitud){
-        super(nom, accessibilitat, estat, vies, longitud);
+    public Passadis(float longitud, String nom, boolean estat){
+        super(longitud);
     }
     
     /**
