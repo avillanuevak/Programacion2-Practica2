@@ -15,22 +15,17 @@ import prog2.vista.ExcepcioEstacio;
 public abstract class Access implements InAcces{
     private String nom;
     private boolean accessibilitat, estat;
-    private Via vies;
-    LlistaVies llistaVies = new LlistaVies();
+    LlistaVies llistaVies;
     
     
     /**
      * Constructor de la classe acess amb paràmetres
-     * @param nom
-     * @param accessibilitat
-     * @param estat
-     * @param vies 
      */
-    public Access(String nom, boolean accessibilitat, boolean estat, Via vies){
+    public Access(){
+        this.llistaVies = new LlistaVies();
         this.nom = nom;
         this.accessibilitat = accessibilitat;
         this.estat = estat;
-        this.vies = vies;
     }
     
     /**
@@ -65,13 +60,6 @@ public abstract class Access implements InAcces{
         this.estat = estat;
     }
 
-    public Via getVies() {
-        return vies;
-    }
-
-    public void setVies(Via vies) {
-        this.vies = vies;
-    }
     
     /**
      * Afegeix una via rebuda com a paràmetre a la llista de vies de l'accés

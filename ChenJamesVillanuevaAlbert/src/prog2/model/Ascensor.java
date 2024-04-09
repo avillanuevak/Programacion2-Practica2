@@ -9,34 +9,70 @@ package prog2.model;
  * @author Albert
  */
 public class Ascensor extends AccessDesnivell{
-    private int carregaMax;
-    
+    private float pes;
+    private float desnivell;
+    private String nom;
+    private boolean estat;
     /**
      * Constructor de la classe Ascensor amb paràmetres
      * @param nom
-     * @param accessibilitat
      * @param estat
-     * @param vies
      * @param desnivell
-     * @param carregaMax 
+     * @param pes 
      */
     
-    public Ascensor(String nom, boolean accessibilitat, boolean estat, Via vies, float desnivell, int carregaMax){
-        super(nom, accessibilitat, estat, vies, desnivell);
-        this.carregaMax = carregaMax;
+    public Ascensor(float pes, float desnivell, String nom, boolean estat){
+        super(desnivell);
+        this.pes = pes;
+        this.desnivell = desnivell;
+        this.nom = nom;
+        this.estat = estat;
+        
     }
 
     /**
-     * Mètodes getters i setter de carregaMax
+     * Mètodes getters i setter de pes
      * @return 
      */
-    public int getCarregaMax() {
-        return carregaMax;
+    public float getPes() {
+        return pes;
     }
 
-    public void setCarregaMax(int carregaMax) {
-        this.carregaMax = carregaMax;
+    public void setPes(int pes) {
+        this.pes = pes;
     }
+
+    @Override
+    public float getDesnivell() {
+        return desnivell;
+    }
+
+    @Override
+    public void setDesnivell(float desnivell) {
+        this.desnivell = desnivell;
+    }
+
+    @Override
+    public String getNom() {
+        return nom;
+    }
+
+    @Override
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    @Override
+    public boolean isEstat() {
+        return estat;
+    }
+
+    @Override
+    public void setEstat(boolean estat) {
+        this.estat = estat;
+    }
+    
+    
     
     /**
      * Mètode isAccessibilitat(), retorna true ja que els ascensors tenen accessibilitat

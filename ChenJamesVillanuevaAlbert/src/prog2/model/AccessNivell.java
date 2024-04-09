@@ -20,8 +20,8 @@ public abstract class AccessNivell extends Access {
      * @param vies
      * @param longitud 
      */
-    public AccessNivell(String nom, boolean accessibilitat, boolean estat, Via vies, int longitud) {
-        super(nom, accessibilitat, estat, vies);
+    public AccessNivell(int longitud) {
+        super();
         this.longitud = longitud;
     }
     
@@ -36,14 +36,5 @@ public abstract class AccessNivell extends Access {
     public void setLongitud(int longitud) {
         this.longitud = longitud;
     }
-    @Override
-    public String toString(){
-        String accessibilitatString, estatString;
-        accessibilitatString = this.isAccessibilitat() ? "Si." : "No.";
-        estatString = this.isEstat() ? "Oberta" : "Tancada";
-        return "Nom: " + this.getNom() + "Tipus: " + this.getClass().getSimpleName() + 
-                "\nCaracteristiques: Longitud " + this.getLongitud() + " metres." + 
-                "Accessibilitat: " + accessibilitatString + " Estat: " + estatString + 
-                " Acces a: " + this.getVies();
-    }
+
 }

@@ -38,4 +38,7 @@ public class VistaEstacioTren {
         this.nomEstacio = nomEstacio;
     }
     
+    public void gestioEstacioTren(){
+        //No se como se hace el metodo
+    }
 }

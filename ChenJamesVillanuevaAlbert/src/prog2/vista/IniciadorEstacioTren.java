@@ -1,4 +1,5 @@
 package prog2.vista;
+import prog2.model.VistaEstacioTren;
 
 /**
  * Entry point of the program.

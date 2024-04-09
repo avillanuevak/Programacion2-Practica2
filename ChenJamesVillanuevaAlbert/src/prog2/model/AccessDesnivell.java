@@ -20,8 +20,8 @@ public abstract class AccessDesnivell extends Access{
      * @param vies
      * @param desnivell 
      */
-    public AccessDesnivell(String nom, boolean accessibilitat, boolean estat, Via vies, float desnivell){
-        super(nom, accessibilitat, estat, vies);
+    public AccessDesnivell(float desnivell){
+        super();
         this.desnivell = desnivell;
     }
     
@@ -36,13 +36,12 @@ public abstract class AccessDesnivell extends Access{
     public void setDesnivell(float desnivell) {
         this.desnivell = desnivell;
     }
-    
     @Override
     public String toString(){
         String DesAccessibilitat = "", DesEstat = "";
         if(this.isAccessibilitat()) DesAccessibilitat = "Si.";
         if(this.isEstat()) DesEstat = "Obert.";
         return "Nom: " + this.getNom() + ". Tipus: " + this.getClass().getSimpleName() + ". Desnivell: " + this.getDesnivell() + 
-                "\nAccessibilitat: " + DesAccessibilitat + " Estat: " + DesEstat  + this.getVies();
+                "\nAccessibilitat: " + DesAccessibilitat + " Estat: " + DesEstat;
     }
 }
