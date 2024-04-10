@@ -75,7 +75,8 @@ public class Via implements InVia {
     public void setLlum(String llum) {
         this.llum = llum;
     }
-
+    
+    
     
         /**
      * Modifica l'estat de la via a Tancada i la il·luminació depenent de la incidència rebuda com a paràmetre

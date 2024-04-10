@@ -80,9 +80,8 @@ public class EstacioTren implements Serializable{
      * Mètode per guardar la classe EstacioTren
      * @param camiDesti
      * @throws ExcepcioEstacio
-     * @throws IOException 
      */
-    public void guardar(String camiDesti) throws ExcepcioEstacio, IOException{
+    public void guardar(String camiDesti) throws ExcepcioEstacio{
         try{
             File fitxer = new File(camiDesti);
             FileOutputStream fout = new FileOutputStream(fitxer);
@@ -93,7 +92,7 @@ public class EstacioTren implements Serializable{
             fout.close();
         }
         catch(IOException e){
-            System.out.println(e.getMessage());
+            System.out.println("Error: No s'ha pogut guardar l'arxiu.");
         }
     }
     
@@ -102,7 +101,6 @@ public class EstacioTren implements Serializable{
      * @param camiOrigen
      * @return
      * @throws ExcepcioEstacio
-     * @throws FileNotFoundException
      * @throws IOException 
      */
     public static EstacioTren carregar(String camiOrigen) throws ExcepcioEstacio, IOException{
@@ -117,7 +115,10 @@ public class EstacioTren implements Serializable{
             fin.close();
         }
         catch(ClassNotFoundException e){
-            System.out.println(e.getMessage());
+            System.out.println("Error: No s'ha pogut carregar");
+        }
+        catch(FileNotFoundException e){
+            System.out.println("Error: Arxiu no trobat.");
         }
         
         return estacio;   

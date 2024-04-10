@@ -39,6 +39,11 @@ public class LlistaVies implements InLlistaVies{
     public void setLlistaVia(ArrayList<Via> llistaVia) {
         this.llistaVia = llistaVia;
     }
+
+    public ArrayList<Via> getLlistaVia() {
+        return llistaVia;
+    }
+    
         
     /**
      * Afegeix una via rebuda per paràmetre a la llista de vies.

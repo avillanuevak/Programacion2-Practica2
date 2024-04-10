@@ -11,7 +11,7 @@ import prog2.vista.ExcepcioEstacio;
 /**
  * Represents a linked list of Acces objects.
  *
- * @author Albert
+ * @author Albert Villanueva
  */
 public class LlistaAccessos implements InLlistaAccessos{
     private ArrayList<Acces> llistaAccessos = new ArrayList();
@@ -79,11 +79,13 @@ public class LlistaAccessos implements InLlistaAccessos{
          
          if(!llistaAccessos.isEmpty()){
              for(Acces acc : llistaAccessos){
-                 Iterator<Via> it = acc.llistaVies.iterator();
                  acc.setEstat(false);
-                 while (it.hasNext()){
-                     if(it.getEstat()) acc.setEstat(true);
-                 }
+                 LlistaVies llista = acc.getLlistaVies();
+                 ArrayList llistaVies = llista.getLlistaVia();
+                 Iterator<Via> it = llistaVies.iterator();
+                 while(it.hasNext()){
+                    if(it.next().getEstat()) acc.setEstat(true);
+                 } 
              }
          }
          else{

@@ -10,12 +10,12 @@ public class Menu<TEnum> {
      /**
      * Llista de les opcions
      */
-    TEnum[] _llistaOpcions=null;
+    TEnum[] _llistaOpcions;
 
     /**
      * Títol del menú
      */
-    String _titol="";
+    String _titol="MENU DE L'ESTACIO DE TREN";
 
     /**
      * Llista amb els missatges associats a les accions

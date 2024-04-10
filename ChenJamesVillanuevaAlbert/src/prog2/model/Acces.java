@@ -60,6 +60,15 @@ public abstract class Acces implements InAcces{
         this.estat = estat;
     }
 
+    public LlistaVies getLlistaVies() {
+        return llistaVies;
+    }
+
+    public void setLlistaVies(LlistaVies llistaVies) {
+        this.llistaVies = llistaVies;
+    }
+
+    
     
     /**
      * Afegeix una via rebuda com a paràmetre a la llista de vies de l'accés
